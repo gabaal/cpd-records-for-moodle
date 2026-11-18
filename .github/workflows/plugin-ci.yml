@@ -59,35 +59,35 @@ jobs:
           php ci/bin/moodle-plugin-ci install --plugin ./plugin/cpdrecords --db-host=127.0.0.1
 
       - name: PHP lint
-        run: php ci/bin/moodle-plugin-ciphplint
+        run: php ci/bin/moodle-plugin-ci phplint
 
       - name: PHP Mess Detector
         continue-on-error: true
-        run: php ci/bin/moodle-plugin-ciphpmd
+        run: php ci/bin/moodle-plugin-ci phpmd
 
       - name: Moodle coding style
-        run: php ci/bin/moodle-plugin-ciphpcs --max-warnings 0
+        run: php ci/bin/moodle-plugin-ci phpcs --max-warnings 0
 
       - name: PHPDoc
-        run: php ci/bin/moodle-plugin-ciphpdoc --max-warnings 0
+        run: php ci/bin/moodle-plugin-ci phpdoc --max-warnings 0
 
       - name: Plugin validation
-        run: php ci/bin/moodle-plugin-civalidate
+        run: php ci/bin/moodle-plugin-ci validate
 
       - name: Upgrade savepoints
-        run: php ci/bin/moodle-plugin-cisavepoints
+        run: php ci/bin/moodle-plugin-ci savepoints
 
       - name: Mustache validation
-        run: php ci/bin/moodle-plugin-cimustache
+        run: php ci/bin/moodle-plugin-ci mustache
 
       - name: Front-end build checks
-        run: php ci/bin/moodle-plugin-cigrunt --max-lint-warnings 0
+        run: php ci/bin/moodle-plugin-ci grunt --max-lint-warnings 0
 
       - name: PHPUnit
-        run: php ci/bin/moodle-plugin-ciphpunit --fail-on-warning
+        run: php ci/bin/moodle-plugin-ci phpunit --fail-on-warning
 
       - name: Behat
-        run: php ci/bin/moodle-plugin-cibehat --profile chrome --scss-deprecations
+        run: php ci/bin/moodle-plugin-ci behat --profile chrome --scss-deprecations
 
       - name: Upload Behat failure output
         if: ${{ failure() }}
