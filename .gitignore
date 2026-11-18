@@ -1,0 +1,15 @@
+# Distribution packages and local test output.
+dist/
+test-output/
+
+# Editor and operating-system files.
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Dependencies and environment files.
+vendor/
+node_modules/
+.env
+.env.*

@@ -1,0 +1,130 @@
+{{!
+    @template local_cpdrecords/dashboard
+
+    Example context (json):
+    {
+        "schemename": "Custom CPD",
+        "rolelabel": "Member",
+        "cyclestart": "01 January 2026",
+        "cycleend": "31 December 2027",
+        "exporturl": "#",
+        "totalhours": "8.50",
+        "requiredhours": "30",
+        "remaininghours": "21.50",
+        "percent": 28.3,
+        "percentlabel": "28.3",
+        "showdeclaration": true,
+        "declarationdue": "28 January 2028",
+        "showminimum": true,
+        "minimumclass": "alert-info",
+        "minimumstatus": "Not yet assessable",
+        "minimumdetail": "Target: 10 hours across two years.",
+        "showzerowarning": false,
+        "showcategories": true,
+        "categories": [
+            {"key": "TECH", "label": "Technical skills", "hours": "8.50"},
+            {"key": "ETH", "label": "Ethics", "hours": "8.50"}
+        ],
+        "hasrecords": true,
+        "records": [
+            {
+                "date": "18 November 2026",
+                "title": "CPD Browser Course",
+                "hours": "8.50",
+                "categories": "Technical skills, Ethics"
+            }
+        ],
+        "recordcount": 1
+    }
+}}
+<div class="local-cpdrecords" data-region="cpd-dashboard">
+    <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3">
+        <div>
+            <h2>{{schemename}}</h2>
+            <p class="mb-1"><strong>{{#str}}professionalrole, local_cpdrecords{{/str}}:</strong> {{rolelabel}}</p>
+            <p class="mb-0"><strong>{{#str}}cycle, local_cpdrecords{{/str}}:</strong> {{cyclestart}} – {{cycleend}}</p>
+        </div>
+        <a class="btn btn-secondary" href="{{exporturl}}">{{#str}}downloadcsv, local_cpdrecords{{/str}}</a>
+    </div>
+
+    <div class="cpd-stat-grid" aria-label="{{#str}}cycleprogress, local_cpdrecords{{/str}}">
+        <div class="cpd-stat-card">
+            <span class="cpd-stat-value">{{totalhours}}</span>
+            <span class="cpd-stat-label">{{#str}}hoursrecorded, local_cpdrecords{{/str}}</span>
+        </div>
+        <div class="cpd-stat-card">
+            <span class="cpd-stat-value">{{requiredhours}}</span>
+            <span class="cpd-stat-label">{{#str}}hoursrequired, local_cpdrecords{{/str}}</span>
+        </div>
+        <div class="cpd-stat-card">
+            <span class="cpd-stat-value">{{remaininghours}}</span>
+            <span class="cpd-stat-label">{{#str}}hoursremaining, local_cpdrecords{{/str}}</span>
+        </div>
+    </div>
+
+    <div class="progress cpd-progress" role="progressbar" aria-valuenow="{{percent}}" aria-valuemin="0" aria-valuemax="100" aria-label="{{#str}}cycleprogress, local_cpdrecords{{/str}}">
+        <div class="progress-bar" style="width: {{percent}}%"></div>
+    </div>
+    <p class="cpd-progress-text">{{totalhours}} / {{requiredhours}} {{#str}}hours, local_cpdrecords{{/str}} ({{percentlabel}}%)</p>
+
+    {{#showdeclaration}}
+        <p><strong>{{#str}}nextdeclaration, local_cpdrecords{{/str}}:</strong> {{declarationdue}}</p>
+    {{/showdeclaration}}
+
+    {{#showminimum}}
+        <div class="alert {{minimumclass}}" role="status">
+            <strong>{{minimumstatus}}</strong>
+            <p class="mb-0">{{minimumdetail}}</p>
+        </div>
+        {{#showzerowarning}}
+            <div class="alert alert-warning" role="alert">{{#str}}zeroyearwarning, local_cpdrecords{{/str}}</div>
+        {{/showzerowarning}}
+    {{/showminimum}}
+
+    {{#showcategories}}
+        <h3>{{#str}}hoursbycategory, local_cpdrecords{{/str}}</h3>
+        <div class="cpd-category-grid">
+            {{#categories}}
+                <div class="cpd-category-card">
+                    <span class="cpd-category-key">{{key}}</span>
+                    <span class="cpd-category-label">{{label}}</span>
+                    <strong>{{hours}} {{#str}}hours, local_cpdrecords{{/str}}</strong>
+                </div>
+            {{/categories}}
+        </div>
+    {{/showcategories}}
+
+    <div class="d-flex justify-content-between align-items-center mt-4 mb-2">
+        <h3 class="mb-0">{{#str}}recordsincycle, local_cpdrecords{{/str}}</h3>
+        <span>{{recordcount}}</span>
+    </div>
+
+    {{#hasrecords}}
+        <div class="table-responsive">
+            <table class="table table-striped generaltable">
+                <caption class="visually-hidden">{{#str}}recordsincycle, local_cpdrecords{{/str}}</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">{{#str}}date, local_cpdrecords{{/str}}</th>
+                        <th scope="col">{{#str}}activity, local_cpdrecords{{/str}}</th>
+                        <th scope="col">{{#str}}cpdhours, local_cpdrecords{{/str}}</th>
+                        <th scope="col">{{#str}}categories, local_cpdrecords{{/str}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#records}}
+                        <tr>
+                            <td>{{date}}</td>
+                            <td>{{title}}</td>
+                            <td>{{hours}}</td>
+                            <td>{{categories}}</td>
+                        </tr>
+                    {{/records}}
+                </tbody>
+            </table>
+        </div>
+    {{/hasrecords}}
+    {{^hasrecords}}
+        <p class="alert alert-info">{{#str}}norecordscycle, local_cpdrecords{{/str}}</p>
+    {{/hasrecords}}
+</div>

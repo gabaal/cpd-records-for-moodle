@@ -1,0 +1,65 @@
+.local-cpdrecords {
+    margin-top: 1rem;
+}
+
+.local-cpdrecords .cpd-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.local-cpdrecords .cpd-stat-card,
+.local-cpdrecords .cpd-category-card {
+    border: 1px solid var(--bs-border-color, #d7dfe3);
+    border-radius: .5rem;
+    padding: 1rem;
+    background: var(--bs-body-bg, #fff);
+}
+
+.local-cpdrecords .cpd-stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.local-cpdrecords .cpd-stat-label,
+.local-cpdrecords .cpd-category-label {
+    display: block;
+    color: var(--bs-secondary-color, #495959);
+    margin-top: .25rem;
+}
+
+.local-cpdrecords .cpd-progress {
+    height: 1rem;
+}
+
+.local-cpdrecords .cpd-progress-text {
+    margin-top: .5rem;
+}
+
+.local-cpdrecords .cpd-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.local-cpdrecords .cpd-category-key {
+    display: inline-block;
+    min-width: 2rem;
+    font-weight: 700;
+    margin-right: .25rem;
+}
+
+.local-cpdrecords .cpd-category-card strong {
+    display: block;
+    margin-top: .75rem;
+}
+
+@media (max-width: 480px) {
+    .local-cpdrecords .cpd-category-grid {
+        grid-template-columns: 1fr;
+    }
+}
