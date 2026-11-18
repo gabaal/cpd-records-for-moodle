@@ -23,7 +23,7 @@ Verified on 18 November 2026:
 - Actual beta ZIP upload through Moodle’s admin installer passed 5 checks on Moodle 4.5
 - Moodle PHPCS, PHPDoc, PHP lint, plugin validation and Mustache/HTML validation pass locally
 
-Remote GitHub Actions CI has not run because the project has not been pushed. PHPMD retains non-blocking complexity advisories for the calculator, scheme validator, repository and privacy exporter; these are future refactoring candidates.
+Remote GitHub Actions CI passed for both Moodle 4.5/PHP 8.3 and Moodle 5.3/PHP 8.4 in run 44384557551. PHPMD retains non-blocking complexity advisories for the calculator, scheme validator, repository and privacy exporter; these are future refactoring candidates.
 
 ## Design boundary
 

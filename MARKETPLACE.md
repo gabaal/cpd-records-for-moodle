@@ -60,4 +60,4 @@ Free, GPL-3.0-or-later. Use the issue tracker associated with the published list
 
 ## Review note
 
-Local Stage 5 checks and both Moodle LTS browser/API suites pass. Remote GitHub Actions CI has not run yet. Do not submit until the repository workflow passes and the uploaded package is the tested `0.1.0-beta.1` build.
+Local Stage 5 checks, both Moodle LTS browser/API suites and remote GitHub Actions CI pass. The intended review package is `0.1.0-beta.1`. No Marketplace submission has been made automatically.
