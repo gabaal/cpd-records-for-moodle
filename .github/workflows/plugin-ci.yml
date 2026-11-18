@@ -56,38 +56,38 @@ jobs:
           echo $(cd ci/vendor/bin; pwd) >> $GITHUB_PATH
           sudo locale-gen en_AU.UTF-8
           echo "NVM_DIR=$HOME/.nvm" >> $GITHUB_ENV
-          moodle-plugin-ci install --plugin ./plugin --db-host=127.0.0.1
+          php ci/bin/moodle-plugin-ci install --plugin ./plugin --db-host=127.0.0.1
 
       - name: PHP lint
-        run: moodle-plugin-ci phplint
+        run: php ci/bin/moodle-plugin-ciphplint
 
       - name: PHP Mess Detector
         continue-on-error: true
-        run: moodle-plugin-ci phpmd
+        run: php ci/bin/moodle-plugin-ciphpmd
 
       - name: Moodle coding style
-        run: moodle-plugin-ci phpcs --max-warnings 0
+        run: php ci/bin/moodle-plugin-ciphpcs --max-warnings 0
 
       - name: PHPDoc
-        run: moodle-plugin-ci phpdoc --max-warnings 0
+        run: php ci/bin/moodle-plugin-ciphpdoc --max-warnings 0
 
       - name: Plugin validation
-        run: moodle-plugin-ci validate
+        run: php ci/bin/moodle-plugin-civalidate
 
       - name: Upgrade savepoints
-        run: moodle-plugin-ci savepoints
+        run: php ci/bin/moodle-plugin-cisavepoints
 
       - name: Mustache validation
-        run: moodle-plugin-ci mustache
+        run: php ci/bin/moodle-plugin-cimustache
 
       - name: Front-end build checks
-        run: moodle-plugin-ci grunt --max-lint-warnings 0
+        run: php ci/bin/moodle-plugin-cigrunt --max-lint-warnings 0
 
       - name: PHPUnit
-        run: moodle-plugin-ci phpunit --fail-on-warning
+        run: php ci/bin/moodle-plugin-ciphpunit --fail-on-warning
 
       - name: Behat
-        run: moodle-plugin-ci behat --profile chrome --scss-deprecations
+        run: php ci/bin/moodle-plugin-cibehat --profile chrome --scss-deprecations
 
       - name: Upload Behat failure output
         if: ${{ failure() }}
