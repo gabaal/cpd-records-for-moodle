@@ -54,5 +54,12 @@ stage5_check('CI uses MariaDB 11', strpos($workflow, 'mariadb:11') !== false);
 stage5_check('CI includes PHPCS with zero warnings', strpos($workflow, 'phpcs --max-warnings 0') !== false);
 stage5_check('CI includes PHPUnit warnings as failures', strpos($workflow, 'phpunit --fail-on-warning') !== false);
 
+$lang = file_get_contents($root . '/cpdrecords/lang/en/local_cpdrecords.php');
+preg_match_all('/^\$string\[\'([^\']+)\'\]/m', $lang, $matches);
+$sortedkeys = $matches[1];
+$sortedcopy = $sortedkeys;
+sort($sortedcopy, SORT_STRING);
+stage5_check('Moodle language strings are ordered by key', $sortedkeys === $sortedcopy);
+
 echo "\n{$passed} passed, {$failed} failed\n";
 exit($failed > 0 ? 1 : 0);

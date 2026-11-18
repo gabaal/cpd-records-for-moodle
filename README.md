@@ -16,7 +16,7 @@ Verified on 18 November 2026:
 - **29 Stage 2 structural checks**
 - **34 Stage 3 structural checks**
 - **33 Stage 4 structural checks**
-- **20 Stage 5 release-asset checks**
+- **21 Stage 5 release-asset checks**
 - Moodle 5.3.1+: **27 Stage 3 browser checks**, **9 admin-report checks**, **23 privacy API checks** and **13 Custom CPD browser checks**
 - Moodle 4.5.16+: the same **27 Stage 3**, **9 admin-report** and **23 privacy API checks**
 - Install, alpha.3 → alpha.4 upgrade and complete uninstall verified on Moodle 4.5
