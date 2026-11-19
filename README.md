@@ -1,14 +1,14 @@
 # CPD Records for Moodle
 
-A profession-neutral CPD tracker being built as Moodle local plugin `local_cpdrecords`.
+A profession-neutral CPD tracker delivered as Moodle local plugin `local_cpdrecords`.
 
-The planned free core records CPD hours when learners complete courses, then presents cycle progress, category totals, configurable multi-year rules and CSV exports. It includes a verified **GDC** preset and a configurable **Custom CPD** scheme.
+The free core records CPD hours when learners complete courses, then presents cycle progress, category totals, configurable multi-year rules and CSV exports. It includes a verified **GDC** preset and a configurable **Custom CPD** scheme.
 
 See **[SPEC.md](SPEC.md)** for the product scope, data model, security/privacy requirements and release gates.
 
-## Current build status
+## Current release status
 
-**Stage 5: release validation and beta package.** The plugin includes Custom CPD/GDC schemes, course completion records, learner dashboard, admin report, CSV exports, privacy integration, CI workflow and Marketplace assets.
+**0.1.0-beta.1 release candidate — Stage 5 complete.** The plugin includes Custom CPD/GDC schemes, course completion records, learner dashboard, admin report, CSV exports, privacy integration, CI workflow and Marketplace assets.
 
 Verified on 18 November 2026:
 
@@ -65,20 +65,22 @@ The test scripts have no Moodle or Composer dependency. In this workspace, where
 ..\plugin-scan\tools\php84\php.exe -n tools/test-stage5.php
 ```
 
-## Build a test ZIP
+## Build the release ZIP
 
 ```powershell
 powershell -NoProfile -File tools/package.ps1
 ```
 
-This creates `dist/local_cpdrecords-0.1.0-beta.1.zip` with `cpdrecords/` at the archive root. The current package is an alpha scaffold, not a production-ready plugin.
+This creates `dist/local_cpdrecords-0.1.0-beta.1.zip` with `cpdrecords/` at the archive root.
 
-## Install the eventual plugin
+## Install the plugin
 
-The source plugin directory is `cpdrecords/`. Once functional and tested, copy it to Moodle's `local/` directory so the component path is:
+Upload the release ZIP through **Site administration → Plugins → Install plugins**, then complete installation under **Notifications**. Alternatively, copy the source `cpdrecords/` directory to Moodle's `local/` directory so the component path is:
 
 ```text
 moodle/local/cpdrecords/
 ```
 
-Do not use this alpha scaffold on a production site.
+For Moodle 5.3's default public-webroot layout, use `moodle/public/local/cpdrecords/`.
+
+This is a beta release candidate. Test the upgrade and your CPD rules on a staging site before production use. See the [plugin README](cpdrecords/README.md) for configuration, privacy and uninstall guidance.
